@@ -1,0 +1,15 @@
+# ============================================
+# 生产环境配置覆盖
+# 使用方式: docker compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
+# 或使用: ./deploy.sh
+# ============================================
+
+services:
+  # 生产环境 Nginx 使用 Dockerfile.prod（包含前端构建）
+  nginx:
+    build:
+      context: .                                     # 使用项目根目录，以便访问 apps/web 源码
+      dockerfile: docker/nginx/Dockerfile.prod
+    depends_on:
+      server:
+        condition: service_healthy
