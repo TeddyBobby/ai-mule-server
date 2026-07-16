@@ -26,7 +26,6 @@ import { ServerManagerModule } from './modules/server-manager/server-manager.mod
 import { PreviewEnvironmentModule } from './modules/preview-environment/preview-environment.module';
 import { IdentityModule } from './modules/identity/identity.module';
 import { AgentModule } from './modules/agent/agent.module';
-import { UploadModule } from './modules/upload/upload.module';
 
 // Common
 import { CommonModule } from './common/common.module';
@@ -61,7 +60,6 @@ import { AppService } from './app.service';
     ServerManagerModule,
     PreviewEnvironmentModule,
     AgentModule,
-    UploadModule,
   ],
   controllers: [AppController],
   providers: [
