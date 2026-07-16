@@ -6,13 +6,14 @@ import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
+  console.log('[bootstrap] Starting NestJS...');
   const app = await NestFactory.create(AppModule, {
-    // 使用自定义的日志记录器
     bufferLogs: true,
   });
+  console.log('[bootstrap] App created, setting up logger...');
 
-  // 使用 Winston 日志
   app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
+  console.log('[bootstrap] Logger set, loading config...');
 
   // 获取配置服务
   const configService = app.get(ConfigService);
