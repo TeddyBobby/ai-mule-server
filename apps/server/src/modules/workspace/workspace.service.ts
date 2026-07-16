@@ -325,7 +325,7 @@ export class WorkspaceService implements OnModuleDestroy {
   async getWorkspaceStatus(workspaceId: string): Promise<WorkspaceStatus> {
     const workspace = await this.workspaceRepository.findOne({
       where: { workspaceId },
-      select: ['status'],
+      select: { status: true } as any,
     });
 
     if (!workspace) {
@@ -467,7 +467,7 @@ export class WorkspaceService implements OnModuleDestroy {
   ): Promise<void> {
     const workspace = await this.workspaceRepository.findOne({
       where: { workspaceId, isDeleted: false },
-      select: ['userId', 'workspaceId'],
+      select: { userId: true, workspaceId: true } as any,
     });
 
     if (!workspace) {
